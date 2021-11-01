@@ -49,10 +49,12 @@ class prcess :
 
     
     def send_data_c(self , board_data) :
+        board_data = pickle.dumps(board_data)
         self.server_socket.send(board_data) 
 
 
     def send_data_h(self , board_data) : 
+        board_data = pickle.dumps(board_data)
         self.client.send(board_data)
 
 
@@ -67,7 +69,7 @@ class prcess :
         else : return "There is a problem for get type connection" # this return help is for prevent any error 
         
         board_data = socket_connection.recv(4096)
-        return board_data
+        return pickle.loads(board_data)
     
         
 
