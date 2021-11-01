@@ -10,6 +10,15 @@ status=1 # set 0 for client and 1 for server (for turns)
 board=[[0,0,0],[0,0,0],[0,0,0]] # main board
 geo={1:(0,0),2:(0,1),3:(0,2),4:(1,0),5:(1,1),6:(1,2),7:(2,0),8:(2,1),9:(2,2)}
 
+def turn_guide():
+    print ("this is guid for turns and inputs:")
+    for i in range(1,10):
+        if i%3!=0:
+            print (i,end="|")
+        else:
+            print (i,end="\n")
+
+
 def print_board() :
     for x in range(len(board)) : 
         for y in range(len(board[x])) : 
