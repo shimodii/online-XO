@@ -30,7 +30,7 @@ def print_board() :
                 print(board[x][y] , end = " | ")
 
 
-
+#
 class prcess : 
     def __init__(self , connection_type , ip = None , port = None) :
         self.server_config = ((ip , port)) 
