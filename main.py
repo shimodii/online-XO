@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 
-# pyngrok
+
+import socket
+import pickle 
+fr60 pyngrok import ngrok 
+
 status=1 # set 0 for client and 1 for server (for turns)
 board=[[0,0,0],[0,0,0],[0,0,0]] # main board
 geo={1:(0,0),2:(0,1),3:(0,2),4:(1,0),5:(1,1),6:(1,2),7:(2,0),8:(2,1),9:(2,2)}
@@ -25,23 +29,51 @@ def print_board() :
                 print(board[x][y] , end = " | ")
 
 
+#
+class prcess : 
+    def __init__(self , connection_type , ip = None , port = None) :
+        self.server_config = ((ip , port)) 
+         
+        if connection_type == "host" : 
+            self.server_socket = socket.socket(socket.AF_INET , socket.SOCK_STREAM)
+            self.server_socket.bind(self.server_config)
+            print("server started . . . ")
+            tcp_link = ngrok.connect(ip , "tcp").public_url
+            print(f"link : {tcp_link}")
+            self.server_socket.listen(1)
+            self.client , self.client_info = self.server_socket.accept()
+            print(f"{self.client_info} has connected to the server")
 
-def server():
-    while 1:
-        if status != 1:
-            pass
+        elif connection_type == "client" : 
+            self.server_socket = socket.socket(socket.AF_INET , socket.SOCK_STREAM)
+            self.server_socket.connect(self.server_config)
 
-        if status == 1:
-            turn=int(input("it's your turn!: "))
+    
+    def send_data_c(self , board_data) :
+        board_data = pickle.dumps(board_data)
+        self.server_socket.send(board_data) 
 
 
-def client(address):
-    while 1:
-        if status == 1:
-            pass
+    def send_data_h(self , board_data) : 
+        board_data = pickle.dumps(board_data)
+        self.client.send(board_data)
+
+
+
+    def get_data(self , type ) : 
+        if type == "host" : 
+            socket_connection = self.client
+
+        elif type == "client" :
+            socket_connection = self.server_socket
+
+        else : return "There is a problem for get type connection" # this return help is for prevent any error 
         
-        if status != 1:
-            turn=int(input("it's your turn!: "))
+        board_data = socket_connection.recv(4096)
+        return pickle.loads(board_data)
+    
+        
+
 
 print ("hello welcome to XO game!")
 choice=input("""1- make a game!
@@ -49,8 +81,5 @@ choice=input("""1- make a game!
 
 print ("\n")
 
-if choice == '2':
-    addr=input("OK, enter friend game address: ")
-    client(addr)
     
 
