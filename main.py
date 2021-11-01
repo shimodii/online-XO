@@ -22,7 +22,7 @@ def server():
             pass
 
         if status == 1:
-            turn=input("it's your turn!: ")
+            turn=int(input("it's your turn!: "))
 
 
 def client(address):
@@ -31,7 +31,7 @@ def client(address):
             pass
         
         if status != 1:
-            turn=input("it's your turn!: ")
+            turn=int(input("it's your turn!: "))
 
 print ("hello welcome to XO game!")
 choice=input("""1- make a game!
