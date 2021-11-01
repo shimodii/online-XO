@@ -80,6 +80,11 @@ choice=input("""1- make a game!
         2- join a friend game!""")
 
 print ("\n")
+if choice == '2':
+    ip=input("Enter game host ip: ")
+    port=input("Enter game host port: ")
 
-    
+
+if choice == '1':
+
 
