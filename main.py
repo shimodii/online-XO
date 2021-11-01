@@ -3,8 +3,7 @@
 
 import socket
 import pickle 
-import pyngrok 
-
+fr60 pyngrok import ngrok 
 
 status=1 # set 0 for client and 1 for server (for turns)
 board=[[0,0,0],[0,0,0],[0,0,0]] # main board
@@ -34,11 +33,13 @@ def print_board() :
 class prcess : 
     def __init__(self , connection_type , ip = None , port = None) :
         self.server_config = ((ip , port)) 
-        
+         
         if connection_type == "host" : 
             self.server_socket = socket.socket(socket.AF_INET , socket.SOCK_STREAM)
             self.server_socket.bind(self.server_config)
-            print("server started . . . ") 
+            print("server started . . . ")
+            tcp_link = ngrok.connect(ip , "tcp").public_url
+            print(f"link : {tcp_link}")
             self.server_socket.listen(1)
             self.client , self.client_info = self.server_socket.accept()
             print(f"{self.client_info} has connected to the server")
