@@ -83,7 +83,10 @@ print ("\n")
 if choice == '2':
     ip=input("Enter game host ip: ")
     port=input("Enter game host port: ")
-    process = process("host" , ip , port)
+    server = process("host" , ip , port)
 
-
+elif choice == "1" : 
+    ip = input("Enter game host ip : ") 
+    port = input("Enter game host port : ") 
+    server = process("client" , ip , port)
 
