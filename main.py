@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/bin/python3
 
 
 import socket
@@ -79,14 +79,41 @@ print ("hello welcome to XO game!")
 choice=input("""1- make a game!
         2- join a friend game!""")
 
+
+
 print ("\n")
 if choice == '2':
     ip=input("Enter game host ip: ")
     port=input("Enter game host port: ")
     server = process("host" , ip , port)
+    status=0
+    turn_guide()
+    print ("\n")
+    while 1:
+        if status != 0:
+            pass
+        
+        if status == 0:
+            cturn=int(input("Its your turn!: "))
+            board[geo[cturn][0]][geo[cturn][1]]='O'
+            status=1 
+            # board , status send kone
+
 
 elif choice == "1" : 
     ip = input("Enter game host ip : ") 
     port = input("Enter game host port : ") 
     server = process("client" , ip , port)
+    status=1 
+    turn_guide()
+    print ("\n")
+    while 1:
+        if status != 1 
+            pass
+
+        if status == 1:
+        sturn=int(input("Its your turn!: "))
+        board[geo[sturn][0]][geo[sturn][1]]='X'
+        status=0
+        # board , status send kone
 
