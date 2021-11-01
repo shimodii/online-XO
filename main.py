@@ -19,5 +19,18 @@ def server():
     status=1
 
 
-def client():
+def client(address):
     status=0
+
+
+print ("hello welcome to XO game!")
+choice=input("""1- make a game!
+        2- join a friend game!""")
+
+print ("\n")
+
+if choice == '2':
+    addr=input("OK, enter friend game address: ")
+    client(addr)
+    
+
