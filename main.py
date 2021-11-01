@@ -30,7 +30,7 @@ def print_board() :
 
 
 #
-class prcess : 
+class process : 
     def __init__(self , connection_type , ip = None , port = None) :
         self.server_config = ((ip , port)) 
          
@@ -83,8 +83,7 @@ print ("\n")
 if choice == '2':
     ip=input("Enter game host ip: ")
     port=input("Enter game host port: ")
+    process = process("host" , ip , port)
 
-
-if choice == '1':
 
 
