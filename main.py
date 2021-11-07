@@ -118,3 +118,7 @@ elif choice == "1" :
         status=0
         server.send_data_h(pickle.dumps(board))
         server.send_data_h(status)
+
+
+
+# end of this
