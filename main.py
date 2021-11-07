@@ -75,7 +75,7 @@ class process :
 
 print ("hello welcome to XO game!")
 choice=int(input("""1- make a game!
-        2- join a friend game!"""))
+2- join a friend game!"""))
 
 
 
