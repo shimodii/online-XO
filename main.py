@@ -31,7 +31,7 @@ def print_board() :
 
 #
 class process : 
-    def __init__(self , connection_type , ip = "127.0.0.1" , port = None) :
+    def __init__(self , connection_type , port , ip = "127.0.0.1") :
         self.server_config = ((ip , port)) 
          
         if connection_type == "host" : 
@@ -82,8 +82,8 @@ choice=int(input("""1- make a game!
 print ("\n")
 if choice == 2:
     ip=input("Enter game host ip: ")
-    port=input("Enter game host port: ")
-    server = process("client" , ip , port)
+    port=int(input("Enter game host port: "))
+    server = process("client" , port , ip)
     status=0
     turn_guide()
     print ("\n")
@@ -102,7 +102,7 @@ if choice == 2:
             pass
 
 elif choice == 1 : 
-    port = input("Enter game host port : ") 
+    port = int(input("Enter game host port : "))
     server = process("host" , port)
     status=1 
     turn_guide()
