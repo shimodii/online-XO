@@ -80,7 +80,7 @@ choice=int(input("""1- make a game!
 
 
 print ("\n")
-if choice == '2':
+if choice == 2:
     ip=input("Enter game host ip: ")
     port=input("Enter game host port: ")
     server = process("client" , ip , port)
@@ -101,7 +101,7 @@ if choice == '2':
         else:
             pass
 
-elif choice == "1" : 
+elif choice == 1 : 
     port = input("Enter game host port : ") 
     server = process("host" , port)
     status=1 
