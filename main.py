@@ -88,6 +88,7 @@ if choice == '2':
     turn_guide()
     print ("\n")
     while 1:
+        server.get_data()
         if status != 0:
             pass
         
@@ -107,6 +108,7 @@ elif choice == "1" :
     turn_guide()
     print ("\n")
     while 1:
+        server.get_data()
         if status != 1 
             pass
 
