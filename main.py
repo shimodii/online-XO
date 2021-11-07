@@ -49,14 +49,12 @@ class process :
             self.server_socket.connect(self.server_config)
 
     
-    def send_data_c(self , board_data) :
-        board_data = pickle.dumps(board_data)
-        self.server_socket.send(board_data) 
+    def send_data_c(self , data) :
+        self.server_socket.send(data) 
 
 
-    def send_data_h(self , board_data) : 
-        board_data = pickle.dumps(board_data)
-        self.client.send(board_data)
+    def send_data_h(self , data) : 
+        self.client.send(data)
 
 
 
