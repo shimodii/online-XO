@@ -3,7 +3,7 @@
 
 import socket
 import pickle 
-fr60 pyngrok import ngrok 
+from pyngrok import ngrok 
 
 status=1 # set 0 for client and 1 for server (for turns)
 board=[[0,0,0],[0,0,0],[0,0,0]] # main board
@@ -83,7 +83,7 @@ print ("\n")
 if choice == '2':
     ip=input("Enter game host ip: ")
     port=input("Enter game host port: ")
-    server = process("host" , ip , port)
+    server = process("client" , ip , port)
     status=0
     turn_guide()
     print ("\n")
@@ -95,13 +95,14 @@ if choice == '2':
             cturn=int(input("Its your turn!: "))
             board[geo[cturn][0]][geo[cturn][1]]='O'
             status=1 
-            # board , status send kone
+            server.send_data_c(pickle.dumps(board))
+            server.send_data_c(status)
 
 
 elif choice == "1" : 
     ip = input("Enter game host ip : ") 
     port = input("Enter game host port : ") 
-    server = process("client" , ip , port)
+    server = process("host" , ip , port)
     status=1 
     turn_guide()
     print ("\n")
@@ -113,5 +114,5 @@ elif choice == "1" :
         sturn=int(input("Its your turn!: "))
         board[geo[sturn][0]][geo[sturn][1]]='X'
         status=0
-        # board , status send kone
-
+        server.send_data_h(pickle.dumps(board))
+        server.send_data_h(status)
