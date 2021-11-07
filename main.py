@@ -89,8 +89,7 @@ if choice == '2':
     print ("\n")
     while 1:
         server.get_data()
-        if status != 0:
-            pass
+        server.get_data()
         
         if status == 0:
             cturn=int(input("Its your turn!: "))
@@ -98,7 +97,9 @@ if choice == '2':
             status=1 
             server.send_data_c(pickle.dumps(board))
             server.send_data_c(status)
-
+        
+        else:
+            pass
 
 elif choice == "1" : 
     ip = input("Enter game host ip : ") 
@@ -109,16 +110,16 @@ elif choice == "1" :
     print ("\n")
     while 1:
         server.get_data()
-        if status != 1 
-            pass
+        server.get_data()
 
         if status == 1:
-        sturn=int(input("Its your turn!: "))
-        board[geo[sturn][0]][geo[sturn][1]]='X'
-        status=0
-        server.send_data_h(pickle.dumps(board))
-        server.send_data_h(status)
+            sturn=int(input("Its your turn!: "))
+            board[geo[sturn][0]][geo[sturn][1]]='X'
+            status=0
+            server.send_data_h(pickle.dumps(board))
+            server.send_data_h(status)
 
-
+        else:
+            pass
 
 # end of this
